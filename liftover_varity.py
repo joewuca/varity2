@@ -2,6 +2,7 @@ from liftover import get_lifter
 import pandas as pd
 import numpy as np
 
+#lift over
 # varity_38_df =  pd.read_csv("../varity_all_predictions.txt",sep = '\t')
 # varity_38_df.head(10).to_csv("../varity_all_predictions_test.txt",index = False)
 # converter = get_lifter('hg19', 'hg38')
