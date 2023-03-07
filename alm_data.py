@@ -79,7 +79,7 @@ class alm_data:
                 self.save_data()
                      
         else:
-            self.dict_savedata = np.load(self.project_path + '/output/npy/' + self.session_id + '_' + self.name + '_savedata.npy')
+            self.dict_savedata = np.load(self.project_path + '/output/npy/' + self.session_id + '_' + self.name + '_savedata.npy' ,allow_pickle=True)
             self.train_data_original_df = self.dict_savedata.get('train_data_original_df',None)
             self.extra_train_data_df_lst = self.dict_savedata['extra_train_data_df_lst']
             self.train_data_df = self.dict_savedata['train_data_df'] 

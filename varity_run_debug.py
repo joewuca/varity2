@@ -26,7 +26,7 @@ sys_argv['action']  = 'init_session'
 # sys_argv['action']  = 'send_email'
 # sys_argv['action'] = 'plot_data_quantity'
 
-sys_argv['session_id'] = 'Revision210704'
+sys_argv['session_id'] = 'VARITY2'
 sys_argv['predictor'] = 'VARITY_R_CV'
 # sys_argv['session_id'] = 'sherloc210915'
 # sys_argv['predictor'] = 'VARITY_Sherloc'
@@ -46,8 +46,8 @@ sys_argv['add_complete_sift_provean_scores'] = 0
 sys_argv['update_pisa'] = 0
 sys_argv['check_data'] = 0
 sys_argv['add_loo'] = 0
-sys_argv['project_path'] = '/data/varity/'
-sys_argv['db_path'] = '/Users/joewu/Dropbox/database/humandb_new/'
+sys_argv['project_path'] = '/data/varity'
+sys_argv['db_path'] = '/data/varity/database/humandb_new/'
 sys_argv['pisa_folder'] = 'pisa3'
 sys_argv['nucleotide_predictors']=['CADD','MutationTaster','FATHMM','GenoCanyon','DANN','GERP++','phyloP','PhastCons','SiPhy','fitCons'] 
 # sys_argv['trials_max_num'] = 300
@@ -90,7 +90,7 @@ if sys_argv['action'] == 'plot_feature_shap_interaction':
 #     sys_argv['shap_target'] = 'single:P01130_R_350_P'
 
 if sys_argv['action'] == 'init_session':
-    sys_argv['reinitiate_session'] = 1
+    sys_argv['reinitiate_session'] = 0
     pass
 
 if sys_argv['action'] == 'mv_analysis':
@@ -463,23 +463,24 @@ if sys_argv['action'] == 'plot_test_result':
     #Performance comparison using nested cross-validation (R)
     ###***************************************************************************************************************************************************************                                                                      
     sys_argv['cur_test_fold'] = -1
-    sys_argv['filter_test_score'] = 1
+    sys_argv['filter_test_score'] = 0
     sys_argv['compare_to_predictor']='VARITY_R_CV'    
             
 
-    sys_argv['compare_predictors']=['VARITY_R_CV','VARITY_WithEve_R_CV','SIFT_R_CV','Polyphen2_HDIV_R_CV','Polyphen2_HVAR_R_CV','PROVEAN_R_CV','CADD_R_CV','PrimateAI_R_CV','Eigen_R_CV',
-                           'REVEL_R_CV','M-CAP_R_CV','LRT_R_CV','MutationTaster_R_CV','MutationAssessor_R_CV','FATHMM_R_CV','MetaSVM_R_CV',
-                           'MetaLR_R_CV','GenoCanyon_R_CV','DANN_R_CV','GERP++_R_CV','phyloP_R_CV','PhastCons_R_CV','SiPhy_R_CV','eve_R_CV','MPC_R_CV']
-    
-    
-    sys_argv['compare_predictors']=['VARITY_R_CV','VARITY_WithEve_R_CV','SIFT_R_CV','Polyphen2_HDIV_R_CV','Polyphen2_HVAR_R_CV','PROVEAN_R_CV','CADD_R_CV','PrimateAI_R_CV','Eigen_R_CV',
-                       'REVEL_R_CV','M-CAP_R_CV','LRT_R_CV','MutationTaster_R_CV','MutationAssessor_R_CV','FATHMM_R_CV','MetaSVM_R_CV',
-                       'MetaLR_R_CV','GenoCanyon_R_CV','DANN_R_CV','GERP++_R_CV','phyloP_R_CV','PhastCons_R_CV','SiPhy_R_CV','MPC_R_CV'] 
- 
-           
-    # sys_argv['no_plot_predictors'] = ['VARITY_R_CV','SIFT_R_CV','Polyphen2_HDIV_R_CV','Polyphen2_HVAR_R_CV','PROVEAN_R_CV','CADD_R_CV','PrimateAI_R_CV','Eigen_R_CV',
-    #                        'M-CAP_R_CV','LRT_R_CV','MutationTaster_R_CV','MutationAssessor_R_CV','FATHMM_R_CV','MetaSVM_R_CV',
-    #                        'MetaLR_R_CV','GenoCanyon_R_CV','DANN_R_CV','GERP++_R_CV','phyloP_R_CV','PhastCons_R_CV','SiPhy_R_CV','fitCons_R_CV','MPC_R_CV']
+    # sys_argv['compare_predictors']=['VARITY_R_CV','VARITY_WithEve_R_CV','SIFT_R_CV','Polyphen2_HDIV_R_CV','Polyphen2_HVAR_R_CV','PROVEAN_R_CV','CADD_R_CV','PrimateAI_R_CV','Eigen_R_CV',
+    #                        'REVEL_R_CV','M-CAP_R_CV','LRT_R_CV','MutationTaster_R_CV','MutationAssessor_R_CV','FATHMM_R_CV','MetaSVM_R_CV',
+    #                        'MetaLR_R_CV','GenoCanyon_R_CV','DANN_R_CV','GERP++_R_CV','phyloP_R_CV','PhastCons_R_CV','SiPhy_R_CV','eve_R_CV','MPC_R_CV']
+    #
+    #
+    # sys_argv['compare_predictors']=['VARITY_R_CV','VARITY_WithEve_R_CV','SIFT_R_CV','Polyphen2_HDIV_R_CV','Polyphen2_HVAR_R_CV','PROVEAN_R_CV','CADD_R_CV','PrimateAI_R_CV','Eigen_R_CV',
+    #                    'REVEL_R_CV','M-CAP_R_CV','LRT_R_CV','MutationTaster_R_CV','MutationAssessor_R_CV','FATHMM_R_CV','MetaSVM_R_CV',
+    #                    'MetaLR_R_CV','GenoCanyon_R_CV','DANN_R_CV','GERP++_R_CV','phyloP_R_CV','PhastCons_R_CV','SiPhy_R_CV','MPC_R_CV'] 
+    #
+    #
+
+    sys_argv['compare_predictors'] = ['VARITY_R_CV','SIFT_R_CV','Polyphen2_HDIV_R_CV','Polyphen2_HVAR_R_CV','PROVEAN_R_CV','CADD_R_CV','PrimateAI_R_CV','Eigen_R_CV',
+                           'M-CAP_R_CV','LRT_R_CV','MutationTaster_R_CV','MutationAssessor_R_CV','FATHMM_R_CV','MetaSVM_R_CV',
+                           'MetaLR_R_CV','GenoCanyon_R_CV','DANN_R_CV','GERP++_R_CV','phyloP_R_CV','PhastCons_R_CV','SiPhy_R_CV','fitCons_R_CV','MPC_R_CV']
     sys_argv['no_plot_predictors'] = []         
     #
     #

@@ -178,7 +178,8 @@ class alm_ml:
         available_trials_result_file = self.fun_perfix(runtime,'csv') + '_trial_results.txt'
         if  os.path.isfile(available_trials_file):                        
             [cur_trials_result,cur_trials_df,X] = self.get_trials(available_trials_file,available_trials_result_file)
-            alm_fun.show_msg (runtime['log'],1,"Previous trials have been loaded.")            
+            if cur_trials_df is not None:
+                alm_fun.show_msg (runtime['log'],1,"Previous trials have been loaded.")            
             if cur_trials_df is None:
                 cur_trials_result = hyperopt.Trials()
                 new_max_evals = alm_predictor.hyperopt_trials
@@ -301,7 +302,7 @@ class alm_ml:
         for cur_test_fold in range(test_split_folds):                   
             runtime['cur_test_fold'] = cur_test_fold
             cur_test_result = self.fun_perfix(runtime, 'npy_temp',target_action = 'single_fold_prediction')+  '_' + runtime['batch_id'] + '_hp_test_single_fold_result.npy'
-            r = np.load(cur_test_result).item()
+            r = np.load(cur_test_result, allow_pickle=True).item()
  
             train_y_fold_predicted = r['train_y_predicted']
             train_y_fold_truth = r['train_y_truth']
@@ -560,7 +561,7 @@ class alm_ml:
         i = 0  
         for cur_tid in tids:   
             cur_result_file = self.fun_perfix(new_runtime,'npy_temp',ignore_trails_mv_size = ignore_trails_mv_size) + '_target_tid_' + str(cur_tid) + '_' + runtime['batch_id'] + '.npy'
-            cur_result_dict = np.load(cur_result_file).item()
+            cur_result_dict = np.load(cur_result_file,allow_pickle = True).item()
             
             cur_test_hyperopt_df = cur_trials_df.loc[cur_trials_df['tid'] == cur_tid,:]
             cur_test_hyperopt_df.index = [cur_tid]
@@ -692,7 +693,7 @@ class alm_ml:
             #**********************************************************************
             for target_index in loo_dict.keys():                
                 cur_fold_result = self.fun_perfix(new_runtime, 'npy_temp')+ '_loo_' + target_name + '_' + str(target_index) + '_' + runtime['batch_id'] + '.npy'                 
-                r_loo = np.load(cur_fold_result).item()
+                r_loo = np.load(cur_fold_result,allow_pickle = True).item()
                 cur_target_df.loc[target_index,predictor_name + '_LOO'] = r_loo['test_y_predicted'].values[0]
               
 #             save_prediction_file = self.fun_perfix(runtime, 'csv') +  '_' + target_name + '_loo_predicted.csv'
@@ -702,7 +703,7 @@ class alm_ml:
             runtime['cur_fold_result'] = self.fun_perfix(runtime, 'npy') + '_' + target_name + '_' +  runtime['batch_id'] + '.npy' 
             runtime['single_fold_type'] = 'target'
             self.fun_single_fold_prediction(runtime)                                        
-            r = np.load(runtime['cur_fold_result']).item()            
+            r = np.load(runtime['cur_fold_result'],allow_pickle = True).item()            
             cur_target_df[predictor_name] = r['test_y_predicted']
             cur_target_df[runtime['target_dependent_variable']] = r['test_y_truth']
             cur_target_df = cur_target_df.reset_index(drop = True)
@@ -787,10 +788,10 @@ class alm_ml:
             successful_load = 0
             while successful_load  == 0:
                 try:
-                    r = np.load(cur_validation_result).item()
+                    r = np.load(cur_validation_result,allow_pickle = True).item()
                     successful_load = 1
                 except: 
-                    time.sleep(10)
+                    time.sleep(1)
             train_y_fold_predicted = r['train_y_predicted']
             train_y_fold_truth = r['train_y_truth']
             train_score_df = r['train_score_df']
@@ -965,7 +966,7 @@ class alm_ml:
             new_runtime['cur_fold_result'] =  cur_validation_fold_result           
             new_runtime['hp_dict_file'] = cur_hp_dict_file
             if not os.path.isfile(new_runtime['cur_fold_result']):        
-                alm_fun.show_msg (runtime['log'],1, 'Run prediction on test fold '  + str(cur_validation_fold) + '......')                                         
+                alm_fun.show_msg (runtime['log'],1, '\nRun prediction on validation fold '  + str(cur_validation_fold) + '......')                                         
                 if (runtime['cluster'] == 1) :                  
                     [job_id,job_name,result_dict] = self.varity_obj.varity_action(new_runtime)
                     cur_jobs[job_name] = []
@@ -990,10 +991,10 @@ class alm_ml:
             successful_load = 0
             while successful_load  == 0:
                 try:
-                    r = np.load(cur_validation_result).item()
+                    r = np.load(cur_validation_result,allow_pickle = True).item()
                     successful_load = 1
                 except: 
-                    time.sleep(10)
+                    time.sleep(1)
             train_y_fold_predicted = r['train_y_predicted']
             train_y_fold_truth = r['train_y_truth']
             train_score_df = r['train_score_df']
@@ -1163,7 +1164,7 @@ class alm_ml:
 #         
 #         
         cur_hp_npy = self.fun_perfix(runtime,'npy',target_action = 'hp_tuning')+ '_hp_dict.npy'       
-        cur_hp_dict = np.load(cur_hp_npy).item()
+        cur_hp_dict = np.load(cur_hp_npy,allow_pickle = True).item()
         [alpha,beta] = self.update_sample_weights(cur_hp_dict,runtime)            
         extra_data = alm_predictor.data_instance.extra_train_data_df_lst[0].copy()
         core_data = alm_predictor.data_instance.train_data_index_df.copy()               
@@ -1405,7 +1406,7 @@ class alm_ml:
         core_data =  alm_predictor.data_instance.train_data_index_df.copy()
         if type == 'from_hp_npy':
             if os.path.isfile(self.fun_perfix(runtime,'npy') + '_hp_weights.npy'):
-                alpha = np.load(self.fun_perfix(runtime,'npy') + '_hp_weights.npy')
+                alpha = np.load(self.fun_perfix(runtime,'npy') + '_hp_weights.npy',allow_pickle = True)
                 extra_data['weight'] = alpha
                 
 #         if type == 'from_nn_npy':    
@@ -1607,7 +1608,7 @@ class alm_ml:
     def load_cur_hp_dict(self,hp_dict_npy_file):                
         if os.path.isfile(hp_dict_npy_file):
             print('non-default hp_dict loaded!')
-            cur_hp_dict =  np.load(hp_dict_npy_file).item()
+            cur_hp_dict =  np.load(hp_dict_npy_file,allow_pickle = True).item()
         else:
             cur_hp_dict = None
             print('default hp_dict loaded!')
@@ -1817,28 +1818,36 @@ class alm_ml:
 #                              '#000000', '#420420', '#008080', '#ffd700', '#ff7373', '#ffa500', '#0000ff', '#003366', '#fa8072', 
 #                              '#800000', '#800080', '#333333', '#4ca3dd','#ff00ff','#008000','#0e2f44','#daa520','#444444','#555555']
         color_dict = {}
-        color_dict['VARITY_R'] = '#ff0000'
-        color_dict['VARITY_ER'] = '#ff0000' #'#40e0d0'
-        color_dict['VARITY_Naive_R'] = '#065535'
-        color_dict['VARITY_Naive1_R'] = '#065535'
-        color_dict['VARITY_Naive_ER'] = '#420420' #'#40e0d0'
-        color_dict['VARITY_NoPPI_R'] = '#0e2f44'
-        color_dict['VARITY_NoPPI_ER'] = '#555555' #'#40e0d0'
-        color_dict['VARITY_NoCS_R'] = '#0e2f44'
-        color_dict['VARITY_NoCS_ER'] = '#555555' #'#40e0d0'
-        color_dict['VARITY_NoPPI-CS_R'] = '#0e2f44'
-        color_dict['VARITY_NoPPI-CS_ER'] = '#555555' #'#40e0d0'
-        color_dict['VARITY_PPI_R'] = '#0e2f44'
-        color_dict['VARITY_PPI_ER'] = '#555555' #'#40e0d0'
-        color_dict['VARITY_CS_R'] = '#0e2f44'
-        color_dict['VARITY_CS_ER'] = '#555555' #'#40e0d0'
-        color_dict['VARITY_PPI-CS_R'] = '#0e2f44'
-        color_dict['VARITY_PPI-CS_ER'] = '#555555' #'#40e0d0'
-        color_dict['VARITY_WithEve_R'] = '#0e2f44'
-        color_dict['VARITY_WithEve_ER'] = '#555555' #'#40e0d0'        
+        color_dict['VARITY2_R'] = '#ff0000'
+        color_dict['VARITY2_ER'] = '#ff0000' #'#40e0d0'
+        
+        color_dict['VARITY_R'] = '#065535'
+        color_dict['VARITY_ER'] = '#065535'
+        color_dict['VARITY_R_CV'] = '#420420' #'#40e0d0'
+        color_dict['VARITY_ER_CV'] = '#0e2f44'
+        
 
-        color_dict['VARITY_R_CV'] = '#ff0000'
-        color_dict['VARITY_ER_CV'] = '#40e0d0'        
+        
+        # color_dict['VARITY_Naive_R'] = '#065535'
+        # color_dict['VARITY_Naive1_R'] = '#065535'
+        # color_dict['VARITY_Naive_ER'] = '#420420' #'#40e0d0'
+        # color_dict['VARITY_NoPPI_R'] = '#0e2f44'
+        # color_dict['VARITY_NoPPI_ER'] = '#555555' #'#40e0d0'
+        # color_dict['VARITY_NoCS_R'] = '#0e2f44'
+        # color_dict['VARITY_NoCS_ER'] = '#555555' #'#40e0d0'
+        # color_dict['VARITY_NoPPI-CS_R'] = '#0e2f44'
+        # color_dict['VARITY_NoPPI-CS_ER'] = '#555555' #'#40e0d0'
+        # color_dict['VARITY_PPI_R'] = '#0e2f44'
+        # color_dict['VARITY_PPI_ER'] = '#555555' #'#40e0d0'
+        # color_dict['VARITY_CS_R'] = '#0e2f44'
+        # color_dict['VARITY_CS_ER'] = '#555555' #'#40e0d0'
+        # color_dict['VARITY_PPI-CS_R'] = '#0e2f44'
+        # color_dict['VARITY_PPI-CS_ER'] = '#555555' #'#40e0d0'
+        # color_dict['VARITY_WithEve_R'] = '#0e2f44'
+        # color_dict['VARITY_WithEve_ER'] = '#555555' #'#40e0d0'        
+
+        color_dict['VARITY2_R_CV'] = '#ff0000'
+        color_dict['VARITY2_ER_CV'] = '#40e0d0'        
         color_dict['SIFT'] = '#bada55'
         color_dict['Polyphen2_HDIV'] = '#ff80ed'
         color_dict['Polyphen2_HVAR'] = '#696969'
@@ -1917,7 +1926,7 @@ class alm_ml:
         #************************************************************#
         
         if runtime['plot_test_with_saved_data'] == 1:
-            all_dict = np.load(output_file.replace('img','npy') + '.npy').item()
+            all_dict = np.load(output_file.replace('img','npy') + '.npy',allow_pickle = True).item()
         else:
             for predictor in predictors:
                 all_dict[predictor] = {}
@@ -2521,7 +2530,7 @@ class alm_ml:
                         plot_runtime = runtime.copy()
                         plot_runtime['predictor'] = plot_predictor                    
                         cur_test_result_dict_file = self.fun_perfix(plot_runtime, 'npy',1,target_action = 'test_cv_prediction') + '_test_cv_results.npy'
-                        cur_test_result_dict = np.load(cur_test_result_dict_file).item()
+                        cur_test_result_dict = np.load(cur_test_result_dict_file,allow_pickle = True).item()
                         cur_test_df[plot_predictor] = cur_test_result_dict['test_y_predicted_dict'][test_folds[0]]                   
           
                 cur_test_df = cur_test_df.loc[cur_test_df[runtime['dependent_variable']].isin([0,1]),:]            
@@ -2569,7 +2578,7 @@ class alm_ml:
                     plot_runtime = runtime.copy()
                     plot_runtime['predictor'] = plot_predictor                    
                     cur_test_result_dict_file = self.fun_perfix(plot_runtime, 'npy',1,target_action = 'test_cv_prediction') + '_test_cv_results.npy'
-                    cur_test_result_dict = np.load(cur_test_result_dict_file).item()
+                    cur_test_result_dict = np.load(cur_test_result_dict_file,allow_pickle = True).item()
                     test_result_dict[plot_predictor] = cur_test_result_dict                                             
                                        
         # Define the the output file name
@@ -2586,7 +2595,7 @@ class alm_ml:
     def plot_data_quantity(self,runtime):
         alm_predictor = self.proj.predictor[runtime['predictor']]        
         cur_hp_npy = self.fun_perfix(runtime,'npy',target_action = 'hp_tuning')+ '_hp_dict.npy'       
-        cur_hp_dict = np.load(cur_hp_npy).item()
+        cur_hp_dict = np.load(cur_hp_npy,allow_pickle = True).item()
         [alpha,beta] = self.update_sample_weights(cur_hp_dict,runtime)            
         extra_data = alm_predictor.data_instance.extra_train_data_df_lst[0].copy()
         train_data = alm_predictor.data_instance.train_data_index_df.copy()               
@@ -2779,7 +2788,7 @@ class alm_ml:
         
         alm_predictor = self.proj.predictor[runtime['predictor']]        
         cur_hp_npy = self.fun_perfix(runtime,'npy',target_action = 'hp_tuning')+ '_hp_dict.npy'       
-        cur_hp_dict = np.load(cur_hp_npy).item()
+        cur_hp_dict = np.load(cur_hp_npy,allow_pickle = True).item()
         [alpha,beta] = self.update_sample_weights(cur_hp_dict,runtime)            
         extra_data = alm_predictor.data_instance.extra_train_data_df_lst[0].copy()
         core_data = alm_predictor.data_instance.train_data_index_df.copy()               
@@ -3088,7 +3097,7 @@ class alm_ml:
         final_train['weight'] = final_train['weight'] /final_train['weight'].max()
    
         features = alm_predictor.features + runtime['additional_features']
-        shap_output = np.load(runtime['shap_target_npy_file'])
+        shap_output = np.load(runtime['shap_target_npy_file'],allow_pickle = True)
                         
         if 'single' in runtime['shap_target']:
             p_vid = runtime['shap_target'].split('-')[1].split(':')[0]

@@ -463,8 +463,7 @@ class varity:
 
             if runtime['action'] == 'plot_data_quantity':
                 self.ml.plot_data_quantity(runtime)                    
-                         
-                
+                                         
             if runtime['action'] == 'plot_feature_shap_interaction':
                 self.ml.plot_feature_shap_interaction(runtime)     
 
@@ -670,10 +669,12 @@ class varity:
         # make sure all predictors have available scores
         print('# of test variants: ' + str(cur_test_df.shape[0]))
 
-  
+        positive_num = np.sum(cur_test_df[runtime['dependent_variable']]== 1)
+        negative_num = np.sum(cur_test_df[runtime['dependent_variable']]== 0)   
 
         if runtime['filter_test_score'] == 0: # original_test_data 
             print ("No filtering......")
+           
                         
         if runtime['filter_test_score'] == 1: # original_test_data with hgmd variants removed   
             cur_test_df = cur_test_df.loc[~((cur_test_df['hgmd_source']== 1) & (cur_test_df[runtime['dependent_variable']]== 1)) ,:]  
