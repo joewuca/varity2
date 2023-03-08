@@ -507,7 +507,7 @@ class varity:
 
     def read_config(self,runtime):
         #check if the config file is available
-        session_config_file = runtime['project_path'] + '/config/' + runtime['session_id'] + '.vsc'        
+        session_config_file = runtime['config_path'] + '/' + runtime['session_id'] + '.vsc'        
         if not os.path.isfile(session_config_file): # no config file 
             print ('Configuration file: ' + runtime['project_path'] + '/config/' + runtime['session_id'] + '.vsc is missing, a valid session configuration file is needed.')
             sys.exit()                

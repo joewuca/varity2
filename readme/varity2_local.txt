@@ -1,0 +1,663 @@
+﻿
+/home/rothlab/jwu/projects/varity2
+
+
+[init_session]
+
+python3 /home/rothlab/jwu/projects/varity2/varity_run.py action=init_session session_id=VARITY2 run_on_node=0 cluster=0 project_path=/home/rothlab/jwu/projects/varity2_project/ config_path=/home/rothlab/jwu/projects/varity2/config/ db_path=/home/rothlab/jwu/projects/varity2_project/ db_path=/home/rothlab/jwu/projects/varity2_database/humandb_new/ mem=20480
+
+[hp_tuning]
+
+python3 /home/rothlab/jwu/projects/varity2/varity_run.py action=hp_tuning session_id=VARITY2 predictor=VARITY2_R_CV run_on_node=0 cluster=0 project_path=/home/rothlab/jwu/projects/varity2_project/ cur_test_fold=0 mem=20480
+
+python3 /home/rothlab/jwu/projects/varity2/varity_run.py action=hp_tuning session_id=VARITY2 predictor=VARITY2_R run_on_node=0 cluster=0 project_path=/home/rothlab/jwu/projects/varity2_project/ cur_test_fold=0 mem=20480
+
+[test_cv_prediction]
+
+python3 /home/rothlab/jwu/projects/varity2/varity_run.py action=test_cv_prediction session_id=VARITY2 predictors=[VARITY2_R_CV,SIFT_R_CV,Polyphen2_HDIV_R_CV,Polyphen2_HVAR_R_CV,PROVEAN_R_CV] run_on_node=0 cluster=0 project_path=/data/varity
+
+[plot_test_result]
+
+python3 /home/rothlab/jwu/projects/varity2/varity_run.py action=plot_test_result session_id=VARITY2 plot_test_with_saved_data=0 plot_show_size=0 t_value=1.833113 filter_test_score=0 cur_test_fold=-1 size_factor=1.13 table_scale_factor=2.83 predictor=VARITY2_R_CV compare_predictors=[VARITY2_R_CV,SIFT_R_CV,Polyphen2_HDIV_R_CV,Polyphen2_HVAR_R_CV,PROVEAN_R_CV] no_plot_predictors=[] nucleotide_predictors=[] compare_to_predictor=VARITY2_R_CV run_on_node=0 cluster=0 project_path=/home/rothlab/jwu/projects/varity2_project/ db_path=/data/varity/database/humandb_new/
+
+[mv_analysis]
+
+python3 /home/rothlab/jwu/projects/varity2/varity_run.py action=mv_analysis session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=0 project_path=/home/rothlab/jwu/projects/varity2_project/ mv_qip=extra_gnomad_af
+
+[plot_mv_result]
+
+python3 /home/rothlab/jwu/projects/varity2/varity_run.py action=plot_mv_result session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=0 project_path=/home/rothlab/jwu/projects/varity2_project/ mv_qip=extra_gnomad_af
+
+
+
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=1 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=2 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=3 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=4 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=5 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=6 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=7 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=8 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=9 mem=20480
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=1 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=2 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=3 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=4 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=5 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=6 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=7 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=8 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=9 mem=20480
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480 
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=1 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=2 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=3 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=4 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=5 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=6 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=7 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=8 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=9 mem=20480
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=1 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=2 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=3 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=4 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=5 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=6 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=7 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=8 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_Naive_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=9 mem=20480
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=1 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=2 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=3 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=4 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=5 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=6 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=7 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=8 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=9 mem=20480
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=0 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=1 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=2 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=3 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=4 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=5 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=6 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=7 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=8 mem=20480
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=hp_tuning session_id=Revision210704 predictor=VARITY_NoPPI_R_CV run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ cur_test_fold=9 mem=20480
+
+save_best_hp
+
+VARITY_R and VARITY_R_CV
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=1 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=2 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=3 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=4 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=5 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=6 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=7 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=8 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_R_CV cur_test_fold=9 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+
+
+VARITY_ER and VARITY_ER_CV
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity 
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=1 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=2 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=3 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=4 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=5 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=6 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=7 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=8 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_ER_CV cur_test_fold=9 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+VARITY_Naive_R and VARITY_Naive_R_CV
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity trials_max_num=300 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=1 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=2 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=3 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=4 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=5 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=6 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=7 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=8 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_R_CV cur_test_fold=9 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+
+VARITY_Naive_ER and VARITY_Naive_ER_CV
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity trials_max_num=300
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=1 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=2 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=3 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=4 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=5 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=6 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=7 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=8 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_Naive_ER_CV cur_test_fold=9 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+
+VARITY_NoPPI_R and VARITY_NoPPI_R_CV
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity trials_max_num=300 
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=1 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=2 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=3 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=4 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=5 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=6 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=7 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=8 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_R_CV cur_test_fold=9 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+
+VARITY_NoPPI_ER and VARITY_NoPPI_ER_CV
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity trials_max_num=300
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=1 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=2 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=3 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=4 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=5 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=6 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=7 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=8 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=save_best_hp session_id=Revision210704 predictor=VARITY_NoPPI_ER_CV cur_test_fold=9 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+
+
+
+
+
+test_cv_prediction
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_Naive_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_NoPPI_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_Naive_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_NoPPI_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_NoCS_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_NoPPI-CS_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_PPI_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_CS_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_PPI-CS_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_NoCS_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_NoPPI-CS_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_PPI_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_CS_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_PPI-CS_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_Naive_ER_CV,VARITY_NoPPI_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_R_CV,SIFT_R_CV,Polyphen2_HDIV_R_CV,Polyphen2_HVAR_R_CV,PROVEAN_R_CV,CADD_R_CV,PrimateAI_R_CV,Eigen_R_CV,REVEL_R_CV,M-CAP_R_CV,LRT_R_CV,MutationTaster_R_CV,MutationAssessor_R_CV,FATHMM_R_CV,MetaSVM_R_CV,MetaLR_R_CV,GenoCanyon_R_CV,DANN_R_CV,GERP++_R_CV,phyloP_R_CV,PhastCons_R_CV,SiPhy_R_CV,fitCons_R_CV,MISTIC_R_CV,MPC_R_CV,EVMutation_R_CV,DeepSequence_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_R_LOO_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_ER_LOO_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_R_LOO_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_ER_LOO_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[MutPred_R_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[MutPred_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_ER_CV,SIFT_ER_CV,Polyphen2_HDIV_ER_CV,Polyphen2_HVAR_ER_CV,PROVEAN_ER_CV,CADD_ER_CV,PrimateAI_ER_CV,Eigen_ER_CV,REVEL_ER_CV,M-CAP_ER_CV,LRT_ER_CV,MutationTaster_ER_CV,MutationAssessor_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[PrimateAI_ER_CV,Eigen_ER_CV,REVEL_ER_CV,M-CAP_ER_CV,LRT_ER_CV,MutationTaster_ER_CV,MutationAssessor_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[FATHMM_ER_CV,MetaSVM_ER_CV,MetaLR_ER_CV,GenoCanyon_ER_CV,DANN_ER_CV,GERP++_ER_CV,phyloP_ER_CV,PhastCons_ER_CV,SiPhy_ER_CV,fitCons_ER_CV,MISTIC_ER_CV,MPC_ER_CV,EVMutation_ER_CV,DeepSequence_ER_CV] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+
+
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_R_CV] run_on_node=0 remove_structural_features=1 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_cv_prediction session_id=Revision210704 predictors=[VARITY_R_CV] run_on_node=0 balance_weights=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity
+
+target_prediction
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/P01130_varity_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label    shap_test_interaction=1
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_mave_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/P01130_varity_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label    shap_test_interaction=1
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_mave_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/projects/varity/output/csv/Revision210704_VARITY_R_loo_test.csv loo=1 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=label
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label shap_train_interaction=0
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label shap_train_interaction=0
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/projects/varity/output/csv/Revision210704_VARITY_R_core.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=label 
+
+
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_Naive_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label 
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_NoPPI_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label 
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_Naive_ER cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label 
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=target_prediction session_id=Revision210704 predictor=VARITY_NoPPI_ER cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv loo=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ prediction_ouput_with_input_cols=0 target_dependent_variable=denovo_label 
+
+
+
+
+merge preditions
+
+Denovo
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=merge_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv target_predicted_files=[Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_R.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_ER.csv] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/
+
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=merge_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv target_predicted_files=[Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_R.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_ER.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_Naive_R.csv] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/
+
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=merge_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv target_predicted_files=[Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_R.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_ER.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_Naive_R.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_Naive_ER.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_NoPPI_R.csv,Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_VARITY_NoPPI_ER.csv] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/
+
+
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=merge_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/P01130_varity_snv_pisa3.csv target_predicted_files=[Revision210704_P01130_varity_snv_pisa3_VARITY_R.csv,Revision210704_P01130_varity_snv_pisa3_VARITY_ER.csv] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=merge_prediction session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/database/humandb_new/varity/all/varity_target_mave_pisa3.csv target_predicted_files=[Revision210704_varity_target_mave_pisa3_VARITY_R.csv,Revision210704_varity_target_mave_pisa3_VARITY_ER.csv] run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/
+
+
+
+
+
+test_hyperopt
+
+all tids
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_hyperopt session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/projects/varity/output/csv/denovodb_snv_dn1_pisa3.csv run_on_node=0 cluster=1 target_dependent_variable=denovo_label project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ test_hyperopt_type=all batch_id=4AA6d1VBdG
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_hyperopt session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 target_file=/home/rothlab/jwu/projects/varity/output/csv/denovodb_snv_dn1_pisa3.csv run_on_node=0 cluster=1 target_dependent_variable=denovo_label project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ test_hyperopt_type=all batch_id=PUHX569W2R
+
+different mvs
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_hyperopt session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 target_file=/home/rothlab/jwu/projects/varity/output/csv/denovodb_snv_dn1_pisa3.csv run_on_node=0 cluster=1 target_dependent_variable=denovo_label project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ test_hyperopt_type=mv trials_max_num=500
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=test_hyperopt session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 target_file=/home/rothlab/jwu/projects/varity/output/csv/denovodb_snv_dn1_pisa3.csv run_on_node=0 cluster=1 target_dependent_variable=denovo_label project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ test_hyperopt_type=mv trials_max_num=1000
+
+loo_prediction
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=run_batch_id_jobs session_id=Revision210704 predictor=VARITY_ER varity_action=fun_loo_predictions cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ batch_id_file=/home/rothlab/jwu/projects/varity/output/csv/Revision210704_VARITY_ER_loo_indices.csv batch_id_exist_files=/home/rothlab/jwu/projects/varity/output/loo_temp/*_VARITY_ER.txt parallel_batches=400 mem=5120 batch_id_name=target_index
+
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=run_batch_id_jobs session_id=Revision210704 predictor=VARITY_R varity_action=fun_loo_predictions cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ db_path=/home/rothlab/jwu/database/humandb_new/ batch_id_file=/home/rothlab/jwu/projects/varity/output/csv/Revision210704_VARITY_R_loo_indices.csv batch_id_exist_files=/home/rothlab/jwu/projects/varity/output/loo_temp/*_VARITY_R.txt parallel_batches=50 mem=5120 batch_id_name=target_index
+
+
+combine_loo_prediction
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=fun_combine_loo_predictions session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ 
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=fun_combine_loo_predictions session_id=Revision210704 predictor=VARITY_ER cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ 
+
+
+add_loo_prediction
+
+python3 /home/rothlab/jwu/projects/varity/python/varity_run.py action=add_loo_predictions add_loo_input_file=/home/rothlab/jwu/projects/varity/output/csv/Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_predicted.csv session_id=Revision210704 predictor=VARITY_R cur_test_fold=0 run_on_node=0 cluster=1 project_path=/home/rothlab/jwu/projects/varity/ 
+
+Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_predicted.csv
+
+
+VERY LONG PROTEIN 
+1)TTN Q8WZ42
+2)MUC16 Q8WXI7
+
+
+
+
+sshpass -p 'Vv8006201285' scp -r /Users/joewu/Dropbox/projects/varity/python jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/projects/varity/config/Revision210704.vsc jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/config/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_hp_tuning_VARITY_R_*_trial_results.txt /Users/joewu/Dropbox/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_hp_tuning_VARITY_ER_*_trial_results.txt /Users/joewu/Dropbox/projects/varity/output/csv/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704*hp_dict.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_hp_tuning_VARITY_R*.pkl /Users/joewu/Dropbox/projects/varity/output/npy/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_hp_tuning_VARITY_ER*.pkl /Users/joewu/Dropbox/projects/varity/output/npy/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_R_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_*CV_hp_test_cv_results.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_predicted_loo.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+
+
+
+
+
+cp Revision210704_hp_tuning_VARITY_R_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_CV_tf9_hp_dict.npy
+
+
+cp Revision210704_hp_tuning_VARITY_R_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_R_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_R_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_R_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_R_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_R_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_R_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_R_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_R_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_CV_tf9_hp_dict.npy
+
+
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_CV_tf9_hp_dict.npy
+
+
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI_ER_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_CS_ER_CV_tf9_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf1_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf1_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf2_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf2_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf3_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf3_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf4_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf4_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf5_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf5_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf6_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf6_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf7_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf7_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf8_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf8_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_CV_tf9_hp_dict.npy Revision210704_hp_tuning_VARITY_PPI-CS_ER_CV_tf9_hp_dict.npy
+
+
+
+
+
+cp Revision210704_hp_tuning_VARITY_R_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_R_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_Naive_ER_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_R_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI_ER_tf0_hp_dict.npy
+
+cp Revision210704_hp_tuning_VARITY_R_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_R_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoCS_ER_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_R_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_R_tf0_hp_dict.npy
+cp Revision210704_hp_tuning_VARITY_ER_tf0_hp_dict.npy Revision210704_hp_tuning_VARITY_NoPPI-CS_ER_tf0_hp_dict.npy
+
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_R_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+
+
+
+
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/projects/varity/output/csv/Revision210704_VARITY_R_core.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/
+
+
+
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/database/humandb_new/varity/all/varity_target_denovodb_enriched_negative_added_snv_pisa3.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/database/humandb_new/varity/all/
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/database/humandb_new/varity/all/P01130_varity_snv_pisa3.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/database/humandb_new/varity/all/
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/database/humandb_new/varity/all/varity_target_mave_pisa3.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/database/humandb_new/varity/all/
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/projects/varity/output/csv/denovodb_snv_dn2_pisa3.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/
+
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/projects/varity/output/csv/Revision210704_VARITY_R_loo_indices.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/projects/varity/output/csv/Revision210704_VARITY_ER_loo_indices.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp  /Users/joewu/Dropbox/projects/varity/output/csv/Revision210704_VARITY_R_loo_test.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/
+
+
+scp  /Users/joewu/Dropbox/projects/varity/output/csv/Revision210704_all_loo_predictions_with_keycols.csv jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/
+
+
+
+Revision210704_target_prediction_VARITY_R_tf0_Revision210704_P01130_varity_snv_pisa3_target_shap.csv
+
+
+
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_mv_analysis_VARITY_R_CV_extra_gnomad_af.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_Revision210704_VARITY_R_core_VARITY_R.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/fun_loo_predictions_XF0BZXYTFY_varity_batch_id.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_Revision210704_VARITY_R_loo_test_VARITY_R_loo.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_target_prediction_VARITY_R_tf0_Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_target_shap.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_P01130_varity_snv_pisa3_VARITY_ER.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_R_LOO_R_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_ER_LOO_R_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_R_LOO_ER_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_ER_LOO_ER_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704*savedata.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_target_prediction_VARITY_ER_tf0_Revision210704_P01130_varity_snv_pisa3_target_interaction_shap.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_target_prediction_VARITY_ER_tf0_Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_train_interaction_shap.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+Revision210704_target_prediction_VARITY_ER_tf0_Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_train_interaction_shap.npy
+Revision210704_target_prediction_VARITY_R_tf0_Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_train_interaction_shap.npy
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704*_ER_*test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704*VARITY*test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704*MutPred*test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_R_LOO_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704_test_cv_prediction_VARITY_ER_LOO_CV_test_cv_results.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704*predicted*.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704*P01130*predicted*.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704*all*denovodb_snv_dn1*.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704*mv_denovodb_snv_dn1*.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704*trial_results.txt /Users/joewu/Dropbox/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/npy/Revision210704*.hp_dict.npy /Users/joewu/Dropbox/projects/varity/output/npy/
+
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_varity_target_denovodb_enriched_negative_added_snv_pisa3_predicted.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+sshpass -p 'Vv8006201285' scp jwu@galenus.mshri.on.ca:/home/rothlab/jwu/projects/varity/output/csv/Revision210704_P01130_varity_snv_pisa3_predicted.csv /Users/joewu/Dropbox/projects/varity/output/csv/
+
+
+
