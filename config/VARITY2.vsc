@@ -1,0 +1,159 @@
+## VARITY2 Configuration ##
+
+############################################################################################################################################################################
+#Data object configuration
+#varity2_train_data_disease_ER and varity2_train_data_disease_R data objects are splitted in nested cross-validation fashion (outer-loop for testing and inner-loop for hyperparameter optimization)
+#varity2_train_data_disease_ER_notest and varity2_train_data_disease_R_noset data are used for train final VARITY2 models (only one dummy outer-loop without any testing data, inner-loop for hyperparameter optimization) 
+############################################################################################################################################################################
+*data: test_split_method|test_split_folds|test_split_ratio|cv_split_method|cv_split_folds|cv_split_ratio|data_file
+############################################################################################################################################################################
+varity2_train_data_disease_ER: 1|10|0|1|10|0|varity2_train_data_disease_ER.csv
+varity2_train_data_disease_R: 1|10|0|1|10|0|varity2_train_data_disease_R.csv
+varity2_train_data_disease_ER_notest: 1|1|0|1|10|0|varity2_train_data_disease_ER.csv
+varity2_train_data_disease_R_notest: 1|1|0|1|10|0|varity2_train_data_disease_R.csv
+
+############################################################################################################################################################################
+#Estimator object configuration
+#xgb_c: Gradient boosted trees for binary classification
+############################################################################################################################################################################
+*estimator: algo_name|round_digits
+############################################################################################################################################################################
+xgb_c: xgb_c|4
+
+############################################################################################################################################################################
+#Predictor object configuration
+#VARITY_R and VARITY_ER predictors are used for final VARITY mode
+#VARITY_R_CV and VARITY_ER_CV are used for nested cross-validation to make performance comparison with other predictors (XXX_R_CV or XXX_ER_CV)
+
+############################################################################################################################################################################
+*predictor: type|ml_type|data|estimator|tune_obj|hyperopt_trials|trials_mv_size|features
+############################################################################################################################################################################
+VARITY2_ER_CV: 1|classification_binary|varity2_train_data_disease_ER|xgb_c|macro_cv_aubprc|100|10|[provean_score,sift_score,evm_epistatic_score,integrated_fitCons_score,LRT_score,GERP++_RS,phyloP30way_mammalian,phastCons30way_mammalian,SiPhy_29way_logOdds,blosum100,in_domain,asa_mean,aa_psipred_E,aa_psipred_H,aa_psipred_C,bsa_max,h_bond_max,salt_bridge_max,disulfide_bond_max,covelent_bond_max,solv_ne_abs_max,mw_delta,pka_delta,pkb_delta,pi_delta,hi_delta,pbr_delta,avbr_delta,vadw_delta,asa_delta,cyclic_delta,charge_delta,positive_delta,negative_delta,hydrophobic_delta,polar_delta,ionizable_delta,aromatic_delta,aliphatic_delta,hbond_delta,sulfur_delta,essential_delta,size_delta]
+VARITY2_R_CV: 1|classification_binary|varity2_train_data_disease_R|xgb_c|macro_cv_aubprc|100|10|[provean_score,sift_score,evm_epistatic_score,integrated_fitCons_score,LRT_score,GERP++_RS,phyloP30way_mammalian,phastCons30way_mammalian,SiPhy_29way_logOdds,blosum100,in_domain,asa_mean,aa_psipred_E,aa_psipred_H,aa_psipred_C,bsa_max,h_bond_max,salt_bridge_max,disulfide_bond_max,covelent_bond_max,solv_ne_abs_max,mw_delta,pka_delta,pkb_delta,pi_delta,hi_delta,pbr_delta,avbr_delta,vadw_delta,asa_delta,cyclic_delta,charge_delta,positive_delta,negative_delta,hydrophobic_delta,polar_delta,ionizable_delta,aromatic_delta,aliphatic_delta,hbond_delta,sulfur_delta,essential_delta,size_delta]
+
+VARITY2_ER: 1|classification_binary|varity2_train_data_disease_ER_notest|xgb_c|macro_cv_aubprc|100|10|[provean_score,sift_score,evm_epistatic_score,integrated_fitCons_score,LRT_score,GERP++_RS,phyloP30way_mammalian,phastCons30way_mammalian,SiPhy_29way_logOdds,blosum100,in_domain,asa_mean,aa_psipred_E,aa_psipred_H,aa_psipred_C,bsa_max,h_bond_max,salt_bridge_max,disulfide_bond_max,covelent_bond_max,solv_ne_abs_max,mw_delta,pka_delta,pkb_delta,pi_delta,hi_delta,pbr_delta,avbr_delta,vadw_delta,asa_delta,cyclic_delta,charge_delta,positive_delta,negative_delta,hydrophobic_delta,polar_delta,ionizable_delta,aromatic_delta,aliphatic_delta,hbond_delta,sulfur_delta,essential_delta,size_delta]
+VARITY2_R: 1|classification_binary|varity2_train_data_disease_R_notest|xgb_c|macro_cv_aubprc|100|10|[provean_score,sift_score,evm_epistatic_score,integrated_fitCons_score,LRT_score,GERP++_RS,phyloP30way_mammalian,phastCons30way_mammalian,SiPhy_29way_logOdds,blosum100,in_domain,asa_mean,aa_psipred_E,aa_psipred_H,aa_psipred_C,bsa_max,h_bond_max,salt_bridge_max,disulfide_bond_max,covelent_bond_max,solv_ne_abs_max,mw_delta,pka_delta,pkb_delta,pi_delta,hi_delta,pbr_delta,avbr_delta,vadw_delta,asa_delta,cyclic_delta,charge_delta,positive_delta,negative_delta,hydrophobic_delta,polar_delta,ionizable_delta,aromatic_delta,aliphatic_delta,hbond_delta,sulfur_delta,essential_delta,size_delta]
+
+Polyphen2_HVAR_R_CV: 0|classification_binary|varity2_train_data_disease_R|xgb_c|macro_cv_aubprc|300|30|[Polyphen2_selected_HVAR_score]
+Polyphen2_HDIV_R_CV: 0|classification_binary|varity2_train_data_disease_R|xgb_c|macro_cv_aubprc|300|30|[Polyphen2_selected_HDIV_score]
+PROVEAN_R_CV: 0|classification_binary|varity2_train_data_disease_R|xgb_c|macro_cv_aubprc|300|30|[provean_score]
+SIFT_R_CV: 0|classification_binary|varity2_train_data_disease_R|xgb_c|macro_cv_aubprc|300|30|[sift_score]
+
+Polyphen2_HVAR: 0|classification_binary|none|xgb_c|macro_cv_aubprc|300|30|[Polyphen2_selected_HVAR_score]
+Polyphen2_HDIV: 0|classification_binary|none|xgb_c|macro_cv_aubprc|300|30|[Polyphen2_selected_HDIV_score]
+PROVEAN: 0|classification_binary|none|xgb_c|macro_cv_aubprc|300|30|[provean_score]
+SIFT: 0|classification_binary|none|xgb_c|macro_cv_aubprc|300|30|[sift_score]
+
+############################################################################################################################################################################
+#Quality Informative Property object configuration
+############################################################################################################################################################################
+*qip: predictors|weight_function|hyperparameters|set_list|set_type|qip_col|direction|mv_size_percent|mv_data_points|enable
+############################################################################################################################################################################
+core_clinvar_0_rs: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[core_clinvar_0_rs_k,core_clinvar_0_rs_L,core_clinvar_0_rs_x0]|[core_clinvar_0]|core|clinvar_review_star|0|50|100|1
+core_clinvar_1_rs: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[core_clinvar_1_rs_k,core_clinvar_1_rs_L,core_clinvar_1_rs_x0]|[core_clinvar_1]|core|clinvar_review_star|0|50|100|1  
+
+extra_clinvar_0_rs: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_clinvar_0_rs_k,extra_clinvar_0_rs_L,extra_clinvar_0_rs_x0]|[extra_clinvar_0_low,extra_clinvar_0_high]|addon|clinvar_review_star|0|50|100|1
+extra_clinvar_1_rs: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_clinvar_1_rs_k,extra_clinvar_1_rs_L,extra_clinvar_1_rs_x0]|[extra_clinvar_1]|addon|clinvar_review_star|0|50|100|1
+
+extra_clinvar_0_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_clinvar_0_af_k,extra_clinvar_0_af_L,extra_clinvar_0_af_x0]|[extra_clinvar_0_low,extra_clinvar_0_high]|addon|neg_log_af|0|50|100|1 
+extra_clinvar_1_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_clinvar_1_af_k,extra_clinvar_1_af_L,extra_clinvar_1_af_x0]|[extra_clinvar_1]|addon|neg_log_af|0|50|100|1
+
+extra_gnomad_hc: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_gnomad_hc_k,extra_gnomad_hc_L,extra_gnomad_hc_x0]|[extra_gnomad_low,extra_gnomad_high]|addon|gnomAD_exomes_nhomalt|0|1000|3|1
+extra_gnomad_low_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_gnomad_low_af_k,extra_gnomad_low_af_L,extra_gnomad_low_af_x0]|[extra_gnomad_low]|addon|neg_log_af|0|50|100|1 
+extra_gnomad_high_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_gnomad_high_af_k,extra_gnomad_high_af_L,extra_gnomad_high_af_x0]|[extra_gnomad_high]|addon|neg_log_af|0|50|100|1   
+
+extra_gnomad_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_gnomad_af_k,extra_gnomad_af_L,extra_gnomad_af_x0]|[extra_gnomad_high,extra_gnomad_low]|addon|neg_log_af|0|50|100|0 
+
+extra_mave_0_lc: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_mave_0_lc_k,extra_mave_0_lc_L,extra_mave_0_lc_x0]|[extra_mave_0]|addon|mave_label_confidence|0|50|100|1  
+extra_mave_0_accessibility: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_mave_0_accessibility_k,extra_mave_0_accessibility_L,extra_mave_0_accessibility_x0]|[extra_mave_0]|addon|accessibility|0|50|100|1
+extra_mave_1_lc:  [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_mave_1_lc_k,extra_mave_1_lc_L,extra_mave_1_lc_x0]|[extra_mave_1]|addon|mave_label_confidence|0|50|100|1  
+extra_mave_1_accessibility: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_mave_1_accessibility_k,extra_mave_1_accessibility_L,extra_mave_1_accessibility_x0]|[extra_mave_1]|addon|accessibility|0|50|100|1  
+
+extra_humsavar_0_low_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_humsavar_0_low_af_k,extra_humsavar_0_low_af_L,extra_humsavar_0_low_af_x0]|[extra_humsavar_0_low]|addon|neg_log_af|0|50|100|1 
+extra_humsavar_0_high_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_humsavar_0_high_af_k,extra_humsavar_0_high_af_L,extra_humsavar_0_high_af_x0]|[extra_humsavar_0_high]|addon|neg_log_af|0|50|100|1
+extra_humsavar_1_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_humsavar_1_af_k,extra_humsavar_1_af_L,extra_humsavar_1_af_x0]|[extra_humsavar_1]|addon|neg_log_af|0|50|100|1
+
+extra_hgmd_af: [VARITY2_ER_CV,VARITY_ER,VARITY2_R_CV,VARITY_R]|logistic|[extra_hgmd_af_k,extra_hgmd_af_L,extra_hgmd_af_x0]|[extra_hgmd]|addon|neg_log_af|0|50|100|1 
+
+############################################################################################################################################################################
+#Hyperparameter object configuration
+############################################################################################################################################################################
+*hyperparameter: qip|hp_type|from|to|step|default|data_type|data_interval|significant_digits
+############################################################################################################################################################################
+core_clinvar_0_rs_k: core_clinvar_0_rs|1|-100|100|1|100|int|0|0
+core_clinvar_0_rs_L: core_clinvar_0_rs|1|0|1|0.1|1|float|0|1
+core_clinvar_0_rs_x0: core_clinvar_0_rs|2|None|None|1|-1|float|100|None
+
+core_clinvar_1_rs_k: core_clinvar_1_rs|1|-100|100|1|100|int|0|0
+core_clinvar_1_rs_L: core_clinvar_1_rs|1|0|1|0.1|1|float|0|1
+core_clinvar_1_rs_x0: core_clinvar_1_rs|2|None|None|1|-1|float|100|None
+
+extra_mave_0_lc_k: extra_mave_0_lc|1|-100|100|1|0|int|0|0
+extra_mave_0_lc_L: extra_mave_0_lc|1|0|1|0.1|0|float|0|1
+extra_mave_0_lc_x0: extra_mave_0_lc|2|None|None|1|0|float|100|None
+
+extra_mave_1_lc_k: extra_mave_1_lc|1|-100|100|1|0|int|0|0
+extra_mave_1_lc_L: extra_mave_1_lc|1|0|1|0.1|0|float|0|1
+extra_mave_1_lc_x0: extra_mave_1_lc|2|None|None|1|0|float|100|None
+
+extra_mave_0_accessibility_k: extra_mave_0_accessibility|1|-100|100|1|0|int|0|0
+extra_mave_0_accessibility_L: extra_mave_0_accessibility|1|0|1|0.1|0|float|0|1
+extra_mave_0_accessibility_x0: extra_mave_0_accessibility|2|None|None|1|0|float|100|None
+
+extra_mave_1_accessibility_k: extra_mave_1_accessibility|1|-100|100|1|0|int|0|0
+extra_mave_1_accessibility_L: extra_mave_1_accessibility|1|0|1|0.1|0|float|0|1
+extra_mave_1_accessibility_x0: extra_mave_1_accessibility|2|None|None|1|0|float|100|None
+
+extra_gnomad_hc_k: extra_gnomad_hc|1|-100|100|1|0|int|0|0
+extra_gnomad_hc_L: extra_gnomad_hc|1|0|1|0.1|0|float|0|1
+extra_gnomad_hc_x0: extra_gnomad_hc|2|None|None|1|0|float|100|None
+
+extra_gnomad_low_af_k: extra_gnomad_low_af|1|-100|100|1|0|int|0|0
+extra_gnomad_low_af_L: extra_gnomad_low_af|1|0|1|0.1|0|float|0|1
+extra_gnomad_low_af_x0: extra_gnomad_low_af|2|None|None|1|0|float|100|None
+
+extra_gnomad_high_af_k: extra_gnomad_high_af|1|-100|100|1|0|int|0|0
+extra_gnomad_high_af_L: extra_gnomad_high_af|1|0|1|0.1|0|float|0|1
+extra_gnomad_high_af_x0: extra_gnomad_high_af|2|None|None|1|0|float|100|None
+
+extra_hgmd_af_k: extra_hgmd_af|1|-100|100|1|0|int|0|0
+extra_hgmd_af_L: extra_hgmd_af|1|0|1|0.1|0|float|0|1
+extra_hgmd_af_x0: extra_hgmd_af|2|None|None|1|0|float|100|None
+
+extra_clinvar_0_rs_k: extra_clinvar_0_rs|1|-100|100|1|0|int|0|0
+extra_clinvar_0_rs_L: extra_clinvar_0_rs|1|0|1|0.1|0|float|0|1
+extra_clinvar_0_rs_x0: extra_clinvar_0_rs|2|None|None|1|0|float|100|None
+
+extra_clinvar_1_rs_k: extra_clinvar_1_rs|1|-100|100|1|0|int|0|0
+extra_clinvar_1_rs_L: extra_clinvar_1_rs|1|0|1|0.1|0|float|0|1
+extra_clinvar_1_rs_x0: extra_clinvar_1_rs|2|None|None|1|0|float|100|None
+
+extra_clinvar_0_af_k: extra_clinvar_0_af|1|-100|100|1|0|int|0|0
+extra_clinvar_0_af_L: extra_clinvar_0_af|1|0|1|0.1|0|float|0|1
+extra_clinvar_0_af_x0: extra_clinvar_0_af|2|None|None|1|0|float|100|None
+
+extra_clinvar_1_af_k: extra_clinvar_1_af|1|-100|100|1|0|int|0|0
+extra_clinvar_1_af_L: extra_clinvar_1_af|1|0|1|0.1|0|float|0|1
+extra_clinvar_1_af_x0: extra_clinvar_1_af|2|None|None|1|0|float|100|None
+
+extra_humsavar_0_low_af_k: extra_humsavar_0_low_af|1|-100|100|1|0|int|0|0
+extra_humsavar_0_low_af_L: extra_humsavar_0_low_af|1|0|1|0.1|0|float|0|1
+extra_humsavar_0_low_af_x0: extra_humsavar_0_low_af|2|None|None|1|0|float|100|None
+
+extra_humsavar_0_high_af_k: extra_humsavar_0_high_af|1|-100|100|1|0|int|0|0
+extra_humsavar_0_high_af_L: extra_humsavar_0_high_af|1|0|1|0.1|0|float|0|1
+extra_humsavar_0_high_af_x0: extra_humsavar_0_high_af|2|None|None|1|0|float|100|None
+   
+extra_humsavar_1_af_k: extra_humsavar_1_af|1|-100|100|1|0|int|0|0
+extra_humsavar_1_af_L: extra_humsavar_1_af|1|0|1|0.1|0|float|0|1
+extra_humsavar_1_af_x0: extra_humsavar_1_af|2|None|None|1|0|float|100|None
+
+n_estimators: None|3|100|500|1|100|int|0|0
+max_depth: None|3|3|6|1|3|int|0|0
+learning_rate: None|3|0.025|0.5|0.025|0.1|float|0|3
+gamma: None|3|0.5|1|0.05|0|float|0|2
+min_child_weight: None|3|1|6|1|1|int|0|0
+subsample: None|3|0.5|1|0.05|1|float|0|2
+colsample_bytree: None|3|0.5|1|0.05|1|float|0|2
+
+

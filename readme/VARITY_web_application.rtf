@@ -1,0 +1,396 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 Roboto-Regular;\f4\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red253\green128\blue8;\red0\green0\blue0;\red0\green0\blue0;
+\red0\green0\blue255;\red42\green0\blue255;\red127\green0\blue128;\red63\green105\blue30;\red251\green2\blue255;
+\red77\green0\blue105;\red252\green33\blue24;\red251\green2\blue7;\red42\green55\blue62;\red238\green240\blue241;
+\red182\green37\blue31;\red24\green25\blue27;\red255\green255\blue255;\red21\green129\blue62;\red47\green180\blue29;
+\red46\green174\blue187;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c57637\c0;\cssrgb\c0\c0\c0;\csgray\c0;
+\cssrgb\c1680\c19835\c100000;\csgenericrgb\c16471\c0\c100000;\cssrgb\c57919\c12801\c57269;\cssrgb\c30831\c47797\c15540;\cssrgb\c100000\c25279\c100000;
+\cssrgb\c37964\c9215\c48780;\cssrgb\c100000\c23177\c11601;\cssrgb\c100000\c14913\c0;\cssrgb\c21569\c27843\c30980;\cssrgb\c94510\c95294\c95686;
+\cssrgb\c77255\c22353\c16078;\cssrgb\c12549\c12941\c14118;\cssrgb\c100000\c100000\c100000;\cssrgb\c5098\c56471\c30980;\cssrgb\c20238\c73898\c14947;
+\cssrgb\c20196\c73240\c78250;}
+\margl1440\margr1440\vieww31500\viewh17200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf2 ************************************************************\
+#log in google cloud\
+\cf3 ssh -i ~/.ssh/imputation joewu@35.231.183.217\
+password: Vv.....\cf2 \
+\
+#run docker in google cloud\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf4 \CocoaLigature0 docker system prune -f\
+docker run -dit --name imputation -p 80:80 -v /home/joewu/projects:/usr/local/projects -v /home/joewu/database:/usr/local/database joewuca/imputation:latest\
+\
+\
+docker run -dit --name imputation -p 80:80 -v /home/joewu/projects1:/usr/local/projects -v /home/joewu/database1:/usr/local/database joewuca/imputation:latest\
+\cf2 \CocoaLigature1 \
+\cf3 \CocoaLigature0 docker exec -it imputation /bin/bash\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf2 \CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 #copy file from google cloud (for testing)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs28 \cf5 scp -r -i ~/.ssh/imputation   joewu@35.231.183.217:\CocoaLigature0 /home/joewu/database/humandb_new/varity/bygene/varity_web_LDLR[P01130].csv \CocoaLigature1 /Users/joewu/Dropbox/database/humandb_new/varity\CocoaLigature0 /bygene/\
+\
+\CocoaLigature1 scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox/database/humandb_new/varity\CocoaLigature0 /bygene/P01130_LDLR_varity_web.txt \CocoaLigature1 joewu@35.231.183.217:\CocoaLigature0 /home/joewu/database/humandb_new/varity/bygene/ \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs36 \cf2 \CocoaLigature1 #debug CGI script\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs28 \cf5 \CocoaLigature0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf6 \CocoaLigature1 http://varity.varianteffect.org/wsgi/varity_wsgi.wsgi?queryflag=7;sessionid=LDLR\cf0 ;\cf6 search_type=protein_name\cf0 ;\cf6 aa_ref=R;aa_alt=P;aa_pos=350;callback=\cf0 1
+\f0\fs36 \cf2 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf2 ************************************************************\cf5 \
+Release the web application \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs28 \cf7 \
+1) On google cloud crate the following folder\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf8     \
+    ** varity folder\cf7 \
+	~/projects/varity \
+	~/projects/varity/python\
+	~/projects/varity/gwt\
+	~/projects/varity/gwt/apache_log\
+	~/projects/varity/gwt/www  (copy from local)\
+\
+\
+\
+\
+\cf8     ** database folder\cf7 \
+   ~/database/humandb_new/\
+   ~/database/humandb_new/uniprot\
+   ~/database/humandb_new/uniprot/npy\
+   ~/database/humandb_new/varity\
+   ~/database/humandb_new/varity/bygene\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf3 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf7 2) copy these folder t google clound\
+\
+	\cf8 **Copy python script for VARITY \cf7 \
+	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox/projects/varity/python joewu@35.231.183.217:/home/joewu/projects/varity/\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs32 \cf7 \
+\cf9 	**update varity_web.py (very often)\
+
+\fs28 	scp -i ~/.ssh/imputation   /Users/joewu/Dropbox/projects/varity/python/varity_web.py joewu@35.231.183.217:/home/joewu/projects/varity/python/varity_web.py\cf7 \
+\
+      
+\fs36 \cf5 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs28 \cf7 	\cf8 **Copy web application (GWT, remember to complie)\cf7 \
+	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox/projects/varity/gwt/www/varity joewu@35.231.183.217:/home/joewu/projects/varity/gwt/www/\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf5 \
+   \
+   
+\fs28 \cf8 **Copy data needed for web application (files required for VARITY database and User downloads, if copy compressed file, need to extract manually on google cloud)
+\fs24 \cf4 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs28 	--\cf8 \CocoaLigature1 copy data from Galen directly\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf8 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf10 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf10 	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/\cf4 \CocoaLigature0 varity_web_other.tar.gz\cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:/home/joewu/\cf10 database/humandb_new/varity/bygene/\
+	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/\cf4 \CocoaLigature0 varity_web_Q.tar.gz\cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:/home/joewu/\cf10 database/humandb_new/varity/bygene/\
+\
+	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/bygene/
+\fs24 \cf4 \CocoaLigature0 P01130_LDLR_varity_web.txt
+\fs28 \cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:/home/joewu/\cf10 database/humandb_new/varity/bygene/\
+\
+	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/bygene/
+\fs24 \cf4 \CocoaLigature0 Q5JR59_MTUS2_varity_web.txt
+\fs28 \cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:/home/joewu/\cf10 database/humandb_new/varity/bygene/\
+	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/bygene/
+\fs24 \cf4 \CocoaLigature0 Q86XX4_FRAS1_varity_web.txt
+\fs28 \cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:/home/joewu/\cf10 database/humandb_new/varity/bygene/\
+\
+\
+\
+\
+	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/all/
+\fs24 \cf4 \CocoaLigature0 varity_target_ukb.csv
+\fs28 \cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/
+\fs28 \cf10 \CocoaLigature1 \
+	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/all/
+\fs24 \cf11 \CocoaLigature0 varity_all_predictions.tar.gz
+\fs28 \cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/
+\fs28 \cf10 \CocoaLigature1 \
+\
+	\cf7 scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/varity/all/
+\fs24 \cf4 \CocoaLigature0 varity_supported_ids.txt
+\fs28 \cf10 \CocoaLigature1  \cf7 joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/
+\fs28 \cf10 \CocoaLigature1 \
+\
+\
+\
+\cf4 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf7 \CocoaLigature1 	scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/database/humandb_new/\cf4 \CocoaLigature0 uniprot/npy/uniprot_seq_dict.npy\cf7 \CocoaLigature1  joewu@35.231.183.217:/home/joewu/\cf4 \CocoaLigature0 database/humandb_new/uniprot/npy/uniprot_seq_dict.npy\
+\cf7 \CocoaLigature1 	scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/projects/varity/output/\cf4 \CocoaLigature0 csv/
+\fs24 \cf11 varity_final_target_results_shaps.csv.gz
+\fs28 \cf7 \CocoaLigature1  joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+
+\fs28 \cf7 \CocoaLigature1 	scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/projects/varity/output/\cf4 \CocoaLigature0 csv/
+\fs24 \cf11 varity_final_target_results_features.csv.gz
+\fs28 \cf7 \CocoaLigature1  joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+\
+
+\fs28 \cf7 \CocoaLigature1 	scp -i ~/.ssh/imputation \cf10 /home/rothlab/jwu/projects/varity/data\cf4 \CocoaLigature0 /
+\fs24 \cf11 VARITY*.csv
+\fs28 \cf7 \CocoaLigature1  joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs28 	--\cf8 \CocoaLigature1 copy data from local Joe's mac\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf7 	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox\cf10 /projects/varity\cf4 \CocoaLigature0 /
+\fs24 \cf11 VARITY_validation.zip
+\fs28 \cf7 \CocoaLigature1  joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+
+\fs28 \cf7 \CocoaLigature1 	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox\cf10 /projects/varity\cf4 \CocoaLigature0 /
+\fs24 \cf11 varity_help.pdf
+\fs28 \cf7 \CocoaLigature1  joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+
+\fs28 \cf7 \CocoaLigature1 	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox\cf10 /projects/varity\cf4 \CocoaLigature0 /output/csv/VARITY_R_training.csv\cf7 \CocoaLigature1  joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+
+\fs28 \cf7 \CocoaLigature1 	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox\cf10 /projects/varity\cf4 \CocoaLigature0 /\cf3 output/csv/
+\fs24 VARITY_ER_training.csv
+\fs28 \CocoaLigature1  \cf7 joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs28 \cf8 \CocoaLigature1 	**GitHub VARITY Final project folder zip\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf7 	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox/\cf10 /projects/varity\cf4 \CocoaLigature0 /github_zip/
+\fs24 \cf11 VARITY_Final.zip
+\fs28 \cf7 \CocoaLigature1  joewu@35.231.183.217:
+\fs24 \cf4 \CocoaLigature0 /home/joewu/projects/varity/gwt/www/downloads/\
+\
+
+\fs28 \cf7 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf7 3) enable the virtual host (\cf12 for the new joewuca/imputation image (2020-02) docker image, this step can be ignored \cf7 ) \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf8     **Copy virity vhost.conf to google cloud\cf7 \
+	scp -r -i ~/.ssh/imputation   /Users/joewu/Dropbox/projects/docker/funregressor_vhost.conf joewu@35.231.183.217:/home/joewu/\
+\
+    \cf8 **Copy virity vhost.conf from google cloud to docker (execute on google cloud)\
+   \cf7 \CocoaLigature0 docker cp ~/funregressor_vhost.conf imputation:/etc/apache2/sites-available/funregressor_vhost.conf\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf7 \CocoaLigature1     \cf8 **Enable the virtual host for VARITY (execute on google cloud docker)\
+   \cf4 \CocoaLigature0 a2ensite varity_vhost.conf  (varity_vhost.conf may need to be edited when reload the imputation image, funregressor --> varity)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+	service apache2 reload\
+\
+4) \cf7 \CocoaLigature1 make sure the required database files are available\
+\cf4 \CocoaLigature0 	/usr/local/database/humandb_new/varity/bygene\cf7 \CocoaLigature1 \
+   \cf4 \CocoaLigature0 /usr/local/database/humandb_new/uniprot/npy/uniprot_seq_dict.npy'\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf7 \CocoaLigature1 5) make sure all the folders have proper read and write permissions (this is the common mistake often occur)\cf4 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf8 	**Change the folder permission for ~/projects and ~/database\cf4 \
+	chmod -R 777 ~/projects\
+	chmod -R 777 ~/database\
+\
+6) /usr/local/database/humandb_new/uniprot/npy/uniprot_seq_dict.npy'\
+\
+	\
+\
+\
+\cf7 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf7 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf2 \CocoaLigature1 ************************************************************\
+#Add additional SSD disk to the google cloud compute engine\
+************************************************************
+\fs28 \cf7 \CocoaLigature0 \
+
+\fs36 \cf2 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf5 1) Adding 100G persistent disk using google cloud console user interface.\
+2) Use 
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo lsblk
+\f0\fs36 \cf5 \cb1 \kerning1\expnd0\expndtw0  command to check the newly added disk (you will see the [DEVICE_ID], in our case is 'sdb'\
+3) Format the disk using the command:\
+   
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo mkfs.ext4 -m \cf15 0\cf13  -E lazy_itable_init=\cf15 0\cf13 ,lazy_journal_init=\cf15 0\cf13 ,discard /dev/sdb\cb1 \
+
+\f0\fs36 \cf5 \kerning1\expnd0\expndtw0 4) Create a directory that serves as the mount point for the new disk.	
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo mkdir -p /mnt/disks/rothlab
+\f3 \cf16 \cb17 \
+
+\f0\fs36 \cf5 \cb1 \kerning1\expnd0\expndtw0 5) Mount the disk to the instance\
+   
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo mount -o discard,defaults /dev/sdb /mnt/disks/rothlab
+\f0\fs36 \cf2 \cb1 \kerning1\expnd0\expndtw0 \
+\cf5 6) Configure read and write permissions on the device\
+   
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo chmod 777 /mnt/disks/rothlab\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf2 \cb1 \kerning1\expnd0\expndtw0 ************************************************************\
+#Add additional standard disk to the google cloud compute engine\
+************************************************************
+\fs28 \cf7 \CocoaLigature0 \
+
+\fs36 \cf2 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf5 1) Adding 100G persistent disk using google cloud console user interface.\
+2) Use 
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo lsblk
+\f0\fs36 \cf5 \cb1 \kerning1\expnd0\expndtw0  command to check the newly added disk (you will see the [DEVICE_ID], in our case is 'sdc'\
+3) Format the disk using the command:\
+   
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo mkfs.ext4 -m \cf15 0\cf13  -E lazy_itable_init=\cf15 0\cf13 ,lazy_journal_init=\cf15 0\cf13 ,discard /dev/sdc\cb1 \
+
+\f0\fs36 \cf5 \kerning1\expnd0\expndtw0 4) Create a directory that serves as the mount point for the new disk.	
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo mkdir -p /mnt/disks/rothlab1
+\f3 \cf16 \cb17 \
+
+\f0\fs36 \cf5 \cb1 \kerning1\expnd0\expndtw0 5) Mount the disk to the instance\
+   
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo mount -o discard,defaults /dev/sdc /mnt/disks/rothlab1
+\f0\fs36 \cf2 \cb1 \kerning1\expnd0\expndtw0 \
+\cf5 6) Configure read and write permissions on the device\
+   
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+sudo chmod 777 /mnt/disks/rothlab1\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf7 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf2 \CocoaLigature1 ************************************************************************************************************************\
+#Make sure the additional disk automatically mounts again when the instance restarts\
+************************************************************************************************************************
+\fs28 \cf7 \CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf5 \CocoaLigature1 1) Create a backup of your current /etc/fstab file
+\fs28 \cf7 \CocoaLigature0 \
+    
+\f2 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 sudo cp /etc/fstab /etc/fstab.backup\
+
+\f0\fs36 \cf5 \cb1 \kerning1\expnd0\expndtw0 2) Use the blkid command to find the UUID for the zonal persistent disk 
+\f2\fs28 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\
+    sudo blkid /dev/sdb\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0 \cf4 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0     /dev/sdb: UUID="567c63d4-16e6-4e4b-979f-2b63157c420d" TYPE="ext4"\cf7 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf5 \CocoaLigature1 3) Edit /etc/fstab file to add UUID and specify the 'nofail' option to allow the system to reboot without the new disk
+\fs28 \cf7 \CocoaLigature0 \
+\pard\pardeftab720\sl400\partightenfactor0
+
+\f2 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\CocoaLigature1 	echo UUID=\cf18 `sudo blkid -s UUID -o value /dev/sdb`\cf13  /mnt/disks/rothlab ext4 discard,defaults,nofail \cf15 0\cf13  \cf15 2\cf13  | sudo tee -a /etc/fstab\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0 \cf4 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	 UUID=567c63d4-16e6-4e4b-979f-2b63157c420d /mnt/disks/rothlab ext4 discard,defaults,nofail 0 2\cf7 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf5 \CocoaLigature1 4) use cat command to verify that your /etc/fstab entries are correct\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs28 \cf7 \CocoaLigature0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf2 \CocoaLigature1 ************************************************************************************************************************\
+#use Symbolic link to map ~/projects and ~/database\
+************************************************************************************************************************
+\fs28 \cf7 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs36 \cf4 ln -s /mnt/disks/rothlab/projects ~/projects\
+ln -s /mnt/disks/rothlab/database ~/database\
+\
+ln -s /mnt/disks/rothlab1/projects ~/projects1\
+ln -s /mnt/disks/rothlab1/database ~/database1\
+\
+ln -s 
+\f4\b\fs28 \cf19 /home/joewu/projects1/varity/gwt/apache_log/error_varity.log \cf20 error_varity1.log
+\f0\b0 \cf7 \
+
+\fs36 \cf4 ln -s 
+\f4\b\fs28 \cf19 /home/joewu/projects1/imputation/gwt/apache_log/error_imputation.log \cf20 error_imputation1.log
+\f0\b0 \cf7 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf7 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs36 \cf2 \CocoaLigature1 ************************************************************************************************************************\
+#Steps needed after restart the imputation instance at google console (2021-11-16)\
+************************************************************************************************************************
+\fs28 \cf7 \CocoaLigature0 \
+\
+1) remount the additional disks if needed\
+2) edit /etc/apache2/site-avaliable/varity_vhost.conf, change funregressor to varity\
+3) \cf4 a2ensite varity_vhost.conf 	\
+4) service apache2 reload\cf7 \
+\
+\
+\
+\
+}
