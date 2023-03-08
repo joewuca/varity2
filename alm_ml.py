@@ -1737,7 +1737,7 @@ class alm_ml:
             #******************************************************************************************
             fig = plt.figure(figsize=(runtime['fig_x']*0.65, runtime['fig_y']*0.65))
             plt.clf()
-            plt.rcParams["font.family"] = "Helvetica"  
+            # plt.rcParams["font.family"] = "Helvetica"  
             ax = plt.subplot()
             marker_offset = 0.007                    
             ax1, = ax.plot(cur_trials_df['index'],cur_trials_df['train_' + alm_predictor.tune_obj],linewidth=3,marker='o', markersize=0,color = 'black')                      
@@ -2114,7 +2114,7 @@ class alm_ml:
             fig = plt.figure(figsize=(fig_x, fig_y),dpi = dpi)
             plt.clf()
 #             plt.rc( 'text', usetex=True ) 
-            plt.rcParams["font.family"] = "Helvetica"    
+            # plt.rcParams["font.family"] = "Helvetica"    
             ax = plt.subplot()
               
             plot_score_metric = plot_metric.split('_')[1]
@@ -2436,7 +2436,7 @@ class alm_ml:
     
     def plot_correlation_barplot(self,runtime,plot_title,key_col,xlabel,ylabel,correlation_df,output_figure_file,output_csv_file):                
         fig = plt.figure(figsize=(30, 20))
-        plt.rcParams["font.family"] = "Helvetica"                  
+        # plt.rcParams["font.family"] = "Helvetica"                  
         ax = plt.subplot()
         
         correlation_output_df = correlation_df[['predictor_name','predictor','display','mean','ste','effect_size','ci','p_value']]
@@ -2480,7 +2480,7 @@ class alm_ml:
         
     def plot_correlation_barplot_old(self,runtime,plot_title,key_col,xlabel,ylabel,correlation_df,output_figure_file,output_csv_file):                
         fig = plt.figure(figsize=(30, 12))
-        plt.rcParams["font.family"] = "Helvetica"                  
+        # plt.rcParams["font.family"] = "Helvetica"                  
         ax = plt.subplot()    
         ax = sns.barplot(x=key_col, hue_order = correlation_df['display'].unique(),hue="display", y="correlation", data=correlation_df,ax = ax)
         ax.set_ylim(0,1)       
@@ -2688,7 +2688,7 @@ class alm_ml:
         legend_size = 40
              
          
-        plt.rcParams["font.family"] = "Helvetica"    
+        # plt.rcParams["font.family"] = "Helvetica"    
         fig = plt.figure(figsize=(fig_w, fig_h))   
         ax = plt.subplot(2,1,1)
         ylim_max = 60000  
@@ -2760,7 +2760,7 @@ class alm_ml:
         
         
         fig = plt.figure(figsize=(runtime['fig_x'],runtime['fig_y']))
-        plt.rcParams["font.family"] = "Helvetica"  
+        # plt.rcParams["font.family"] = "Helvetica"  
         plt.clf()        
         ax = plt.subplot()
         ax.plot(cur_sorted_hp_df['mv_id'],cur_sorted_hp_df[cur_metric],linewidth=6,marker='o', markersize=10,color = '#558ED5')
@@ -2861,7 +2861,7 @@ class alm_ml:
         else:
             fig = plt.figure(figsize=(30, 30))
                            
-        plt.rcParams["font.family"] = "Helvetica"
+        # plt.rcParams["font.family"] = "Helvetica"
 
         cur_subplot = 0
         for plot_weight_type in runtime['plot_weight_type']:                  
@@ -3241,7 +3241,7 @@ class alm_ml:
             
         fig = plt.figure(figsize=(30*fig_factor,20*fig_factor),dpi = 300)                                     
         plt.clf()
-        plt.rcParams["font.family"] = "Helvetica"  
+        # plt.rcParams["font.family"] = "Helvetica"  
         ax = plt.subplot()                
         vmax = np.nanmax(cur_plot_matrix)
         vmin = np.nanmin(cur_plot_matrix)  
